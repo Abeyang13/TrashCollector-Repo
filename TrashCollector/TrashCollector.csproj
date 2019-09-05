@@ -169,6 +169,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -185,6 +186,14 @@
     <Compile Include="Migrations\201909041543435_updatingCustomer.cs" />
     <Compile Include="Migrations\201909041543435_updatingCustomer.Designer.cs">
       <DependentUpon>201909041543435_updatingCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909051403061_3rd migration for employee and customer.cs" />
+    <Compile Include="Migrations\201909051403061_3rd migration for employee and customer.Designer.cs">
+      <DependentUpon>201909051403061_3rd migration for employee and customer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909051415210_migration4removeemailfromcustomerandemployee.cs" />
+    <Compile Include="Migrations\201909051415210_migration4removeemailfromcustomerandemployee.Designer.cs">
+      <DependentUpon>201909051415210_migration4removeemailfromcustomerandemployee.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -256,6 +265,11 @@
     <Content Include="Views\Customers\Details.cshtml" />
     <Content Include="Views\Customers\Edit.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\Employees\Create.cshtml" />
+    <Content Include="Views\Employees\Delete.cshtml" />
+    <Content Include="Views\Employees\Details.cshtml" />
+    <Content Include="Views\Employees\Edit.cshtml" />
+    <Content Include="Views\Employees\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -282,6 +296,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909041543435_updatingCustomer.resx">
       <DependentUpon>201909041543435_updatingCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909051403061_3rd migration for employee and customer.resx">
+      <DependentUpon>201909051403061_3rd migration for employee and customer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909051415210_migration4removeemailfromcustomerandemployee.resx">
+      <DependentUpon>201909051415210_migration4removeemailfromcustomerandemployee.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
