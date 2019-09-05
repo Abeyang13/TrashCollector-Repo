@@ -20,5 +20,9 @@ namespace TrashCollector.Models
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }
         public IEnumerable<Customer> Customers { get; set; }
+
+        [ForeignKey("ApplicationUser")]
+        public string ApplicationId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
     }
 }

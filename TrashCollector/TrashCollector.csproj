@@ -195,6 +195,10 @@
     <Compile Include="Migrations\201909051415210_migration4removeemailfromcustomerandemployee.Designer.cs">
       <DependentUpon>201909051415210_migration4removeemailfromcustomerandemployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909051642347_added application id to employee.cs" />
+    <Compile Include="Migrations\201909051642347_added application id to employee.Designer.cs">
+      <DependentUpon>201909051642347_added application id to employee.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -302,6 +306,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909051415210_migration4removeemailfromcustomerandemployee.resx">
       <DependentUpon>201909051415210_migration4removeemailfromcustomerandemployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909051642347_added application id to employee.resx">
+      <DependentUpon>201909051642347_added application id to employee.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
