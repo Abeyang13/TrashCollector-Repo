@@ -27,13 +27,12 @@ namespace TrashCollector.Models
         [Display(Name = "Select Suspend End Date")]
         [DataType(DataType.Date)]
         public string SuspendPickUpEndDate { get; set; }
-        [Display(Name = "Select Weekly Pick Up Date")]
-        [DataType(DataType.Date)]
-        public string PickUpDate { get; set; }
+        public string PickUpDay { get; set; }
         [Display(Name = "Account Balance")]
         public double Balance { get; set; }
         [ForeignKey("ApplicationUser")]
         public string ApplicationId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
+        public enum DayOfWeek { };
     }
 }

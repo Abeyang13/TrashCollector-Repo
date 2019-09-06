@@ -199,6 +199,22 @@
     <Compile Include="Migrations\201909051642347_added application id to employee.Designer.cs">
       <DependentUpon>201909051642347_added application id to employee.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909052129544_Added zipcode to employee.cs" />
+    <Compile Include="Migrations\201909052129544_Added zipcode to employee.Designer.cs">
+      <DependentUpon>201909052129544_Added zipcode to employee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909061407555_migration update on employee table.cs" />
+    <Compile Include="Migrations\201909061407555_migration update on employee table.Designer.cs">
+      <DependentUpon>201909061407555_migration update on employee table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909061431192_migration customer enum.cs" />
+    <Compile Include="Migrations\201909061431192_migration customer enum.Designer.cs">
+      <DependentUpon>201909061431192_migration customer enum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909061440230_changed customer pickupdate to day.cs" />
+    <Compile Include="Migrations\201909061440230_changed customer pickupdate to day.Designer.cs">
+      <DependentUpon>201909061440230_changed customer pickupdate to day.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -274,6 +290,7 @@
     <Content Include="Views\Employees\Details.cshtml" />
     <Content Include="Views\Employees\Edit.cshtml" />
     <Content Include="Views\Employees\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutCustomer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -309,6 +326,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909051642347_added application id to employee.resx">
       <DependentUpon>201909051642347_added application id to employee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909052129544_Added zipcode to employee.resx">
+      <DependentUpon>201909052129544_Added zipcode to employee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909061407555_migration update on employee table.resx">
+      <DependentUpon>201909061407555_migration update on employee table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909061431192_migration customer enum.resx">
+      <DependentUpon>201909061431192_migration customer enum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909061440230_changed customer pickupdate to day.resx">
+      <DependentUpon>201909061440230_changed customer pickupdate to day.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

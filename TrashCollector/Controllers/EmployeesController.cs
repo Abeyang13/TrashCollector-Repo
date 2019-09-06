@@ -18,8 +18,12 @@ namespace TrashCollector.Controllers
         // GET: Employees
         public ActionResult Index()
         {
-            var employees = db.Employees.Include(e => e.Customer).ToList();
-            return View(employees);
+
+            var employeeId = User.Identity.GetUserId();
+            var employee = db.Employees.Where(e => e.ApplicationId == employeeId).Single();
+            var customers = db.Customers.Where(c => c.Zipcode == employee.Zipcode);
+
+            return View(customers);
         }
 
         // GET: Employees/Details/5
@@ -40,7 +44,6 @@ namespace TrashCollector.Controllers
         // GET: Employees/Create
         public ActionResult Create()
         {
-            ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "FirstName");
             return View();
         }
 
@@ -49,7 +52,7 @@ namespace TrashCollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,CustomerId")] Employee employee)
+        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,Zipcode")] Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -58,8 +61,6 @@ namespace TrashCollector.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "FirstName", employee.CustomerId);
             return View(employee);
         }
 
@@ -75,7 +76,6 @@ namespace TrashCollector.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "FirstName", employee.CustomerId);
             return View(employee);
         }
 
@@ -84,7 +84,7 @@ namespace TrashCollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,CustomerId")] Employee employee)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Zipcode")] Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -92,7 +92,6 @@ namespace TrashCollector.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "FirstName", employee.CustomerId);
             return View(employee);
         }
 
