@@ -121,6 +121,23 @@ namespace TrashCollector.Controllers
             return RedirectToAction("Index");
         }
 
+        //public ActionResult ConfirmPickUp(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Customer customer = db.Customers.Find(id);
+        //    customer.Balance += 20;
+        //    customer.ConfirmPickUp = true;
+        //    db.SaveChanges();
+        //    if (customer == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return RedirectToAction("Index");
+        //}
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -18,7 +18,9 @@ namespace TrashCollector.Controllers
         // GET: Customers
         public ActionResult Index()
         {
-            return View(db.Customers.ToList());
+            var customerId = User.Identity.GetUserId();
+            var customer= db.Customers.Where(c => c.ApplicationId == customerId).ToList();          
+            return View(customer);
         }
 
         // GET: Customers/Details/5
@@ -47,7 +49,7 @@ namespace TrashCollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CustomerId,FirstName,LastName,Address,State,Zipcode,OneTimePickUpDate,SuspendPickUpStartDate,SuspendPickUpEndDate,PickUpDate,Balance")] Customer customer)
+        public ActionResult Create([Bind(Include = "CustomerId,FirstName,LastName,Address,State,Zipcode,OneTimePickUpDate,SuspendPickUpStartDate,SuspendPickUpEndDate,PickUpDay,Balance,ApplicationId,ConfirmPickUp")] Customer customer)
         {
             if (ModelState.IsValid)
             {
@@ -80,7 +82,7 @@ namespace TrashCollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CustomerId,FirstName,LastName,Address,State,Zipcode,OneTimePickUpDate,SuspendPickUpStartDate,SuspendPickUpEndDate,PickUpDate,Balance")] Customer customer)
+        public ActionResult Edit([Bind(Include = "CustomerId,FirstName,LastName,Address,State,Zipcode,OneTimePickUpDate,SuspendPickUpStartDate,SuspendPickUpEndDate,PickUpDay,Balance,ApplicationId,ConfirmPickUp")] Customer customer)
         {
             if (ModelState.IsValid)
             {

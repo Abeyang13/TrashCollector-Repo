@@ -34,5 +34,6 @@ namespace TrashCollector.Models
         public string ApplicationId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
         public enum DayOfWeek { };
+        public bool ConfirmPickUp { get; set; }
     }
 }
