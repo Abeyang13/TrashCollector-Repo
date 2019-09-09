@@ -17,11 +17,16 @@ namespace TrashCollector.Controllers
 
         // GET: Employees
         public ActionResult Index()
-        {
 
+
+        {
+            var today = DateTime.Today.DayOfWeek.ToString();
             var employeeId = User.Identity.GetUserId();
             var employee = db.Employees.Where(e => e.ApplicationId == employeeId).Single();
-            var customers = db.Customers.Where(c => c.Zipcode == employee.Zipcode);
+            // Need to be able to show customer that has same zipcode/pickupday equals today
+            // Then be able to select a day and filter all customers that has that certain day including one time pickups
+            // Also need to make sure that customers that has suspend dates for those days do not show up on my list 
+            var customers = db.Customers.Where(c => c.Zipcode == employee.Zipcode && c.PickUpDay == today);
 
             return View(customers);
         }
