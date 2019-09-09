@@ -22,21 +22,26 @@ namespace TrashCollector.Controllers
             var employee = db.Employees.Where(e => e.ApplicationId == employeeId).ToList();
             return View(employee);
         }
-        public ActionResult CustomerIndex()
+        public ActionResult CustomerIndex(string SearchText)
         {
             var today = DateTime.Today;
             var pickUpDay = today.DayOfWeek.ToString();
             var oneTimePickUpDay = today.Date;
 
-
             var employeeId = User.Identity.GetUserId();
             var employee = db.Employees.Where(e => e.ApplicationId == employeeId).Single();
-            // Then be able to select a day and filter all customers that has that certain day including one time pickups
-            // Also need to make sure that customers that has suspend dates for those days do not show up on my list 
-            var customers = db.Customers.Where(c => c.Zipcode == employee.Zipcode);//have to find a way to compare start and end suspend date
-            customers = customers.Where(c => c.PickUpDay == pickUpDay || c.OneTimePickUpDate == oneTimePickUpDay);
-
-            return View(customers);
+            if(SearchText == null)
+            {
+                var customers = db.Customers.Where(c => c.Zipcode == employee.Zipcode);
+                customers = customers.Where(c => c.PickUpDay == pickUpDay || c.OneTimePickUpDate == oneTimePickUpDay);
+                return View(customers);
+            }
+            else
+            {
+                var customers = db.Customers.Where(c => c.Zipcode == employee.Zipcode);
+                customers = customers.Where(c => c.PickUpDay == SearchText);
+                return View(customers);
+            }         
         }
 
         // GET: Employees/Details/5
