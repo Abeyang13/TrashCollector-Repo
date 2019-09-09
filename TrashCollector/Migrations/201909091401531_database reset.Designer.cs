@@ -7,13 +7,13 @@ namespace TrashCollector.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class addedapplicationidtoemployee : IMigrationMetadata
+    public sealed partial class databasereset : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addedapplicationidtoemployee));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(databasereset));
         
         string IMigrationMetadata.Id
         {
-            get { return "201909051642347_added application id to employee"; }
+            get { return "201909091401531_database reset"; }
         }
         
         string IMigrationMetadata.Source

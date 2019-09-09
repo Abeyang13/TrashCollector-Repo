@@ -20,13 +20,13 @@ namespace TrashCollector.Models
         public string Zipcode { get; set; }
         [Display(Name = "Select One Time Pick Up Date")]
         [DataType(DataType.Date)]
-        public string OneTimePickUpDate { get; set; }
+        public DateTime? OneTimePickUpDate { get; set; }
         [Display(Name = "Select Suspend Start Date")]
         [DataType(DataType.Date)]
-        public string SuspendPickUpStartDate { get; set; }
+        public DateTime? SuspendPickUpStartDate { get; set; }
         [Display(Name = "Select Suspend End Date")]
         [DataType(DataType.Date)]
-        public string SuspendPickUpEndDate { get; set; }
+        public DateTime? SuspendPickUpEndDate { get; set; }
         public string PickUpDay { get; set; }
         [Display(Name = "Account Balance")]
         public double Balance { get; set; }

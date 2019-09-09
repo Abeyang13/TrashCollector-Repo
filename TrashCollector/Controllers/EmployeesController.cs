@@ -17,16 +17,24 @@ namespace TrashCollector.Controllers
 
         // GET: Employees
         public ActionResult Index()
-
-
         {
-            var today = DateTime.Today.DayOfWeek.ToString();
+            var employeeId = User.Identity.GetUserId();
+            var employee = db.Employees.Where(e => e.ApplicationId == employeeId).ToList();
+            return View(employee);
+        }
+        public ActionResult CustomerIndex()
+        {
+            var today = DateTime.Today;
+            var pickUpDay = today.DayOfWeek.ToString();
+            var oneTimePickUpDay = today.Date;
+
+
             var employeeId = User.Identity.GetUserId();
             var employee = db.Employees.Where(e => e.ApplicationId == employeeId).Single();
-            // Need to be able to show customer that has same zipcode/pickupday equals today
             // Then be able to select a day and filter all customers that has that certain day including one time pickups
             // Also need to make sure that customers that has suspend dates for those days do not show up on my list 
-            var customers = db.Customers.Where(c => c.Zipcode == employee.Zipcode && c.PickUpDay == today);
+            var customers = db.Customers.Where(c => c.Zipcode == employee.Zipcode);//have to find a way to compare start and end suspend date
+            customers = customers.Where(c => c.PickUpDay == pickUpDay || c.OneTimePickUpDate == oneTimePickUpDay);
 
             return View(customers);
         }
@@ -89,7 +97,7 @@ namespace TrashCollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Zipcode")] Employee employee)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Zipcode,ApplicationId")] Employee employee)
         {
             if (ModelState.IsValid)
             {

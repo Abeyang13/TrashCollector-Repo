@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TrashCollector.Models.Customer>
+﻿@model IEnumerable<TrashCollector.Models.Employee>
 
 @{
     ViewBag.Title = "Index";
@@ -6,6 +6,9 @@
 
 <h2>Index</h2>
 
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 <table class="table">
     <tr>
         <th>
@@ -15,31 +18,7 @@
             @Html.DisplayNameFor(model => model.LastName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.State)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Zipcode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OneTimePickUpDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SuspendPickUpStartDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SuspendPickUpEndDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PickUpDay)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Balance)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConfirmPickUp)
         </th>
         <th></th>
     </tr>
@@ -53,37 +32,15 @@
             @Html.DisplayFor(modelItem => item.LastName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.State)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Zipcode)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.OneTimePickUpDate)
+            @Html.HiddenFor(modelItem => item.ApplicationId)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SuspendPickUpStartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SuspendPickUpEndDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PickUpDay)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Balance)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConfirmPickUp)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.CustomerId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.CustomerId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.CustomerId }) |
-            @*@Html.ActionLink("ConfirmPickUp", "ConfirmPickUp", new { id = item.CustomerId })*@
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>
 }
