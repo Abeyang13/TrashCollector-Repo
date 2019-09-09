@@ -50,44 +50,47 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.State)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Zipcode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OneTimePickUpDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SuspendPickUpStartDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SuspendPickUpEndDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PickUpDay)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Balance)
-            </td>
-            <td>
-                @Html.HiddenFor(modelItem => item.ApplicationId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ConfirmPickUp)
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LastName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Address)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.State)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Zipcode)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.OneTimePickUpDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SuspendPickUpStartDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SuspendPickUpEndDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PickUpDay)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Balance)
+    </td>
+    <td>
+        @Html.HiddenFor(modelItem => item.ApplicationId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ConfirmPickUp)
+    </td>
+    <td>
+        @Html.ActionLink("ConfirmPickUp", "ConfirmPickUp", new { id = item.CustomerId })
+    </td>
+</tr>
     }
 
 </table>

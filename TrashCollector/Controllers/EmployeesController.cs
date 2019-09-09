@@ -41,7 +41,6 @@ namespace TrashCollector.Controllers
             }
             customers = customers.Where(c => c.SuspendPickUpStartDate > today || c.SuspendPickUpStartDate == null && c.SuspendPickUpEndDate < today || c.SuspendPickUpEndDate == null);
             // if today is less than startday or if today is greater end date 
-
             return View(customers);
         }
 
@@ -140,22 +139,22 @@ namespace TrashCollector.Controllers
             return RedirectToAction("Index");
         }
 
-        //public ActionResult ConfirmPickUp(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Customer customer = db.Customers.Find(id);
-        //    customer.Balance += 20;
-        //    customer.ConfirmPickUp = true;
-        //    db.SaveChanges();
-        //    if (customer == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return RedirectToAction("Index");
-        //}
+        public ActionResult ConfirmPickUp(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Customer customer = db.Customers.Find(id);           
+            customer.ConfirmPickUp = true;
+            customer.Balance += 20;
+            db.SaveChanges();
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+            return RedirectToAction("CustomerIndex");
+        }
 
         protected override void Dispose(bool disposing)
         {
