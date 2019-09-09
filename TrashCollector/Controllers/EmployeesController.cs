@@ -30,18 +30,19 @@ namespace TrashCollector.Controllers
 
             var employeeId = User.Identity.GetUserId();
             var employee = db.Employees.Where(e => e.ApplicationId == employeeId).Single();
-            if(SearchText == null)
+            var customers = db.Customers.Where(c => c.Zipcode == employee.Zipcode);
+            if (SearchText == null)
             {
-                var customers = db.Customers.Where(c => c.Zipcode == employee.Zipcode);
                 customers = customers.Where(c => c.PickUpDay == pickUpDay || c.OneTimePickUpDate == oneTimePickUpDay);
-                return View(customers);
             }
             else
-            {
-                var customers = db.Customers.Where(c => c.Zipcode == employee.Zipcode);
-                customers = customers.Where(c => c.PickUpDay == SearchText);
-                return View(customers);
-            }         
+            {             
+                customers = customers.Where(c => c.PickUpDay == SearchText);               
+            }
+            customers = customers.Where(c => c.SuspendPickUpStartDate > today || c.SuspendPickUpStartDate == null && c.SuspendPickUpEndDate < today || c.SuspendPickUpEndDate == null);
+            // if today is less than startday or if today is greater end date 
+
+            return View(customers);
         }
 
         // GET: Employees/Details/5
